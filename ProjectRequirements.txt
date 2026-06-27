@@ -1,0 +1,11 @@
+E-Commerce Product Recommendation System
+Goal: Suggest products based on user behavior.
+Guidelines:
+
+Use collaborative or content-based filtering techniques.
+
+Apply matrix factorization or deep learning methods.
+
+Integrate with a simple web app using Flask or Streamlit.
+
+Evaluate using precision, recall, and NDCG.

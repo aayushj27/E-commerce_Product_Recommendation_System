@@ -1,0 +1,27 @@
+Phase 1: Data Preprocessing and Setup
+Before building any models, we need to prepare the raw Amazon dataset for machine learning.
+Data Cleaning: Load the dataset and handle any missing values (e.g., empty summaries or text).
+Feature Selection: Filter out columns that might not contribute to the model (like Id or ProfileName), focusing heavily on UserId, ProductId, and Score for user behavior.
+Text Processing (Optional but Recommended): If we pursue content-based filtering later, we will need to clean the Summary and Text columns by removing stopwords, punctuation, and applying tokenization or TF-IDF.
+Data Filtering: E-commerce datasets are highly sparse. We'll likely need to filter out users who have only left one review and products that have very few ratings to ensure the models have enough data to learn meaningful patterns.
+
+Phase 2: Exploratory Data Analysis (EDA)
+Score Distribution: Visualize how ratings (1-5) are distributed across the dataset to check for imbalances.
+User & Product Activity: Plot the distribution of reviews per user and reviews per product to understand the sparsity of our user-item matrix.
+Helpfulness Analysis: Examine if the HelpfulnessNumerator and HelpfulnessDenominator can be used to weight the importance of certain reviews.
+
+Phase 3: Model Development
+We will build the recommendation engine based on your core guidelines. 
+We can approach this in stages:  
+Baseline Model (Collaborative Filtering): We will start by creating a user-item matrix and applying matrix factorization techniques like Singular Value Decomposition (SVD) or Alternating Least Squares (ALS).  
+Content-Based Filtering: We can build an alternative model that recommends products similar to what a user has highly rated in the past, based on the cosine similarity of the Text and Summary embeddings.  
+Deep Learning (Advanced): To push the performance further, we can implement a Deep Learning method like Neural Collaborative Filtering (NCF), which uses neural networks to capture complex, non-linear user-item interactions.  
+
+Phase 4: Model Evaluation
+To ensure our model is actually providing useful recommendations, we will split the data into training and testing sets.
+Metric Calculation: We will evaluate the models using precision, recall, and NDCG (Normalized Discounted Cumulative Gain). NDCG is particularly important here as it measures the ranking quality (i.e., making sure the best recommendations appear at the top of the list).  
+
+Phase 5: Web Application Integration
+Once the model is trained and evaluated, we will deploy it locally.
+Framework Selection: We will integrate the model into a simple web application using either Flask or Streamlit. Streamlit is generally faster for spinning up data-driven UI prototypes in Python.  
+Interface Design: The app will have a simple interface where we can input a UserId and it will display a formatted list of the top-N recommended ProductIds, perhaps alongside their predicted scores.
